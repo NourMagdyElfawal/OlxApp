@@ -1,0 +1,8 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <category name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</category>-->
+<!--    <category name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</category>-->
+<!--    <category name="ic_menu_addAdv" type="drawable">@android:drawable/ic_menu_addadv</category>-->
+<!--    <category name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</category>-->
+<!--    <category name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</category>-->
+<!--    <category name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</category>-->
+</resources>

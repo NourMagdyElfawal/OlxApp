@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <category
+        android:id="@+id/action_offers"
+        android:enabled="true"
+        android:icon="@drawable/ic_call_answer"
+        android:title="اتصال"
+        app:showAsAction="never" />
+
+    <category
+        android:id="@+id/action_cart"
+        android:enabled="true"
+        android:title=""
+        app:showAsAction="never" />
+
+    <category
+        android:id="@+id/action_coupons"
+        android:enabled="true"
+        android:icon="@drawable/ic_envelope"
+        android:title="مراسلة"
+        app:showAsAction="never" />
+</menu>
