@@ -21,12 +21,16 @@ import com.example.olxapp.R;
 import com.example.olxapp.ui.ItemsRecyclerFragment.ItemsRecyclerFragment;
 import com.example.olxapp.ui.home.HomeFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
     private Context mContext;
     private List<category> categoryList;
     private List<category> imageTitleList;
+
+    public <E> HomeAdapter(ArrayList<E> es) {
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
@@ -68,7 +72,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 ItemsRecyclerFragment itemsRecyclerFragment = new ItemsRecyclerFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.co, itemsRecyclerFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().add(R.id.container, itemsRecyclerFragment).commit();
 
 //                Fragment fragment = new tasks();
 //                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
