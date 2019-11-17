@@ -6,6 +6,8 @@ import android.net.Uri;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.olxapp.Interface.Items;
 import com.example.olxapp.R;
 import com.example.olxapp.recycleViewViewHolder.ItemsViewHolder;
+import com.example.olxapp.ui.ItemDetailsFragment;
 import com.example.olxapp.ui.ItemsRecyclerFragment.ItemsRecyclerFragment;
 import com.example.olxapp.ui.addAdv.AddAdvFragment;
 
@@ -157,8 +160,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
                 public void onClick(View view) {
 
                     AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    AddAdvFragment addAdvFragment = new AddAdvFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, addAdvFragment).commit();
+                    ItemDetailsFragment itemDetailsFragment = new ItemDetailsFragment();
+//                    Bundle args = new Bundle();
+//                    args.putString("fragment", "item");
+//                    addAdvFragment.setArguments(args);
+                    activity.getSupportFragmentManager().beginTransaction().add(R.id.items_main_content,itemDetailsFragment ).commit();
 
 
                 }

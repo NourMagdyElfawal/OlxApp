@@ -1,72 +1,62 @@
-package com.example.olxapp.ui.addAdv;
+package com.example.olxapp.ui;
 
-import android.app.FragmentManager;
+import androidx.cardview.widget.CardView;
+import androidx.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.olxapp.MainActivity;
 import com.example.olxapp.R;
 import com.example.olxapp.design.CurvedBottomNavigationView;
+import com.example.olxapp.ui.addAdv.AddAdvFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
-public class AddAdvFragment extends Fragment implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class ItemDetailsFragment extends Fragment implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private SlideshowViewModel addAdvViewModel;
+    private ItemDetailsViewModel mViewModel;
     CurvedBottomNavigationView mView;
     MainActivity mainActivity;
     CardView card_telephone,card_confirm;
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        addAdvViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_addadv, container, false);
-        setHasOptionsMenu(true);
+    public static ItemDetailsFragment newInstance() {
+        return new ItemDetailsFragment();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root= inflater.inflate(R.layout.item_details_fragment, container, false);
+
         card_telephone=root.findViewById(R.id.card_telephone);
         card_confirm=root.findViewById(R.id.card_AdvAddress);
         mView = root.findViewById(R.id.customBottomBar);
-        mView.setOnNavigationItemSelectedListener(AddAdvFragment.this);
+        mView.setOnNavigationItemSelectedListener(ItemDetailsFragment.this);
         ((MainActivity) Objects.requireNonNull(getActivity())).hideFloatingActionButton();
-
-        String item;
-//        if (getArguments() != null) {
-//           item= getArguments().getString("fragment");
-//            if(item!=null&&item.equalsIgnoreCase("item")){
-//                mView.setVisibility(View.VISIBLE);
-//                card_telephone.setVisibility(View.GONE);
-//                card_confirm.setVisibility(View.GONE);
-//
-//            }
-//        }
-
-
-//        addAdvViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
         return root;
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(ItemDetailsViewModel.class);
+        // TODO: Use the ViewModel
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        switch (menuItem.getItemId()) {
+        //        switch (menuItem.getItemId()) {
 //            case R.id.action_offers:
 //
 //                break;
@@ -134,7 +124,7 @@ public class AddAdvFragment extends Fragment implements BottomNavigationView.OnN
 //
 //                break;
 //        }
+
         return false;
     }
-
 }
