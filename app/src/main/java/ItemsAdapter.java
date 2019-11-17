@@ -1,6 +1,8 @@
  
 import android.content.Intent;
 import android.net.Uri;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,17 +15,14 @@ import com.bumptech.glide.Glide;
 import com.example.olxapp.Interface.Items;
 import com.example.olxapp.R;
 import com.example.olxapp.recycleViewViewHolder.ItemsViewHolder;
+import com.example.olxapp.ui.ItemsRecyclerFragment.ItemsRecyclerFragment;
+import com.example.olxapp.ui.addAdv.AddAdvFragment;
 
 import java.util.List;
  
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-    /**
-     * Created on : Jan 26, 2019
-     * Author     : AndroidWave
-     * Email    : info@androidwave.com
-     */
     public class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
         private static final String TAG = "ItemsAdapter";
         public static final int VIEW_TYPE_EMPTY = 0;
@@ -118,11 +117,11 @@ import butterknife.ButterKnife;
 
                 final Items mSport = mSportList.get(position);
 
-                if (mSport.getImageUrl() != null) {
-                    Glide.with(itemView.getContext())
-                            .load(mSport.getImageUrl())
-                            .into(coverImageView);
-                }
+//                if (mSport.getImageUrl() != null) {
+//                    Glide.with(itemView.getContext())
+//                            .load(mSport.getImageUrl())
+//                            .into(coverImageView);
+//                }
 
                 if (mSport.getTitle() != null) {
                     titleTextView.setText(mSport.getTitle());
@@ -136,23 +135,36 @@ import butterknife.ButterKnife;
                     infoTextView.setText(mSport.getInfo());
                 }
 
-                itemView.setOnClickListener(v -> {
-                    if (mSport.getImageUrl() != null) {
-                        try {
-                            Intent intent = new Intent();
-                            intent.setAction(Intent.ACTION_VIEW);
-                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                            intent.setData(Uri.parse(mSport.getImageUrl()));
-                            itemView.getContext().startActivity(intent);
-                        } catch (Exception e) {
-                            Log.e(TAG, "onClick: Image url is not correct");
-                        }
+//                itemView.setOnClickListener(v -> {
+//                    if (mSport.getImageUrl() != null) {
+//                        try {
+//                            Intent intent = new Intent();
+//                            intent.setAction(Intent.ACTION_VIEW);
+//                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                            intent.setData(Uri.parse(mSport.getImageUrl()));
+//                            itemView.getContext().startActivity(intent);
+//                        } catch (Exception e) {
+//                            Log.e(TAG, "onClick: Image url is not correct");
+//                        }
+//                    }
+//                });
+
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                        AddAdvFragment addAdvFragment = new AddAdvFragment();
+                        activity.getSupportFragmentManager().beginTransaction().add(R.id.container, addAdvFragment).commit();
+
+
                     }
                 });
             }
         }
 
-        public class EmptyViewHolder extends ItemsViewHolder {
+            public class EmptyViewHolder extends ItemsViewHolder {
 
             @BindView(R.id.tv_message)
             TextView messageTextView;
